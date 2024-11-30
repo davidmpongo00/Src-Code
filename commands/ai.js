@@ -16,7 +16,7 @@ module.exports = {
     const query = args.join(" ").toLowerCase();
 
     if (!query) {
-      const defaultMessage = "🌟 Hello, how can i help you?";
+      const defaultMessage = "🌟 Salut, que puis-je faire pour toi?";
       const formattedMessage = useFontFormatting ? formatResponse(defaultMessage) : defaultMessage;
       return await sendMessage(senderId, { text: formattedMessage }, pageAccessToken);
     }
@@ -40,16 +40,15 @@ const handleChatResponse = async (senderId, input, pageAccessToken) => {
 
     const responseTime = new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila', hour12: true });
 
-    const answeringMessage = `🕗 Answering your question...`;
+    const answeringMessage = `🕗 Patientez...`;
     const formattedAnsweringMessage = useFontFormatting ? formatResponse(answeringMessage) : answeringMessage;
     await sendMessage(senderId, { text: formattedAnsweringMessage }, pageAccessToken);
 
     const defaultMessage = `Free GPT / OpenAI
-━━━━━━━━━━━━━━━━
-❓Question: ${input}
-━━━━━━━━━━━━━━━━ 
+
+━━━━━━━━━━━━━ 
 ✅ Answer: ${response}
-━━━━━━━━━━━━━━━━ 
+━━━━━━━━━━━━━
 ⏰ Response: ${responseTime}`;
 
     const formattedMessage = useFontFormatting ? formatResponse(defaultMessage) : defaultMessage;
